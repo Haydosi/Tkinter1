@@ -185,8 +185,8 @@ NextMemberButton.grid(row=8,column=2,columnspan=1)
 #default1.trace('w', change_dropdown)
 
 
-
-
+if __name__ == '__main__':
+    mywindow.mainloop()
         
 
 
