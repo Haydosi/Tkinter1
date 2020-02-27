@@ -1,5 +1,5 @@
-import tkinter as tk
 from tkinter import *
+from tkinter.ttk import *
 from tkinter import messagebox
 
 Position = 0
@@ -122,31 +122,31 @@ def calculateDiscount(*args):
     
     
 
-mywindow = tk.Tk()
+mywindow = Tk()
 mywindow.grid()
 mywindow.title('Members and Moneys')
 #mywindow.configure(bg = 'light blue')
-label = tk.Label(mywindow, text='Members')
+label = Label(mywindow, text='Members')
 label.grid(row=0,column=0,columnspan=5)
 
-FirstnameLabel = tk.Label(mywindow,text='Firstname')
+FirstnameLabel = Label(mywindow,text='Firstname')
 FirstnameLabel.grid(row=1,column=0,columnspan=1)
-FirstnameTextBox = tk.Text(mywindow,width=20,height=2)
+FirstnameTextBox = Text(mywindow,width=20,height=2)
 FirstnameTextBox.grid(row=1,column=1,sticky='E')
 
-SurnameLabel = tk.Label(mywindow,text='Surname')
+SurnameLabel = Label(mywindow,text='Surname')
 SurnameLabel.grid(row=2,column=0,columnspan=1)
-SurnameTextBox = tk.Text(mywindow,width=20,height=2)
+SurnameTextBox = Text(mywindow,width=20,height=2)
 SurnameTextBox.grid(row=2,column=1,sticky='E')
 
-DateOfBirthLabel = tk.Label(mywindow,text='DateofBirth')
+DateOfBirthLabel = Label(mywindow,text='DateofBirth')
 DateOfBirthLabel.grid(row=3,column=0,columnspan=1)
-DateOfBirthTextBox = tk.Text(mywindow,width=20,height=2)
+DateOfBirthTextBox = Text(mywindow,width=20,height=2)
 DateOfBirthTextBox.grid(row=3,column=1,sticky='E')
 
-NotesLabel = tk.Label(mywindow,text='Notes')
+NotesLabel = Label(mywindow,text='Notes')
 NotesLabel.grid(row=4,column=0,columnspan=1)
-NotesTextBox = tk.Text(mywindow,width=20,height=2)
+NotesTextBox = Text(mywindow,width=20,height=2)
 NotesTextBox.grid(row=4,column=1,sticky='E')
 
 default1 = StringVar(mywindow)
@@ -154,25 +154,26 @@ choices = [ '0', '1','2','3','4']
 default1.set('Choose an Option')
 dropdownMenu = OptionMenu(mywindow, default1, *choices)
 Label(mywindow, text="Choose amount of friends").grid(row = 5, column = 0)
+
 dropdownMenu.grid(row = 5, column =1)
 
-DiscountLabel = tk.Label(mywindow,text='Discount')
+DiscountLabel = Label(mywindow,text='Discount')
 DiscountLabel.grid(row=6,column=0,columnspan=1)
-DiscountTextBox = tk.Text(mywindow,width=20,height=2)
+DiscountTextBox = Text(mywindow,width=20,height=2)
 DiscountTextBox.grid(row=6,column=1,sticky='E')
 DiscountTextBox.config(state=DISABLED)
 
 default1.trace('w', calculateDiscount)
 
-NewMemberButton = tk.Button(mywindow,text='New Member',bg='#aaa9ad', command=cleartextboxes)
+NewMemberButton = Button(mywindow,text='New Member', command=cleartextboxes)
 NewMemberButton.grid(row=7,column=0,columnspan=1)
-SaveMemberButton = tk.Button(mywindow,text='Save Member',bg = 'blue', command=saveMember)
+SaveMemberButton = Button(mywindow,text='Save Member', command=saveMember)
 SaveMemberButton.grid(row=7,column=1,columnspan=1)
-LoadMembersButton = tk.Button(mywindow,text='Load Members', command=loadMembers)
+LoadMembersButton = Button(mywindow,text='Load Members', command=loadMembers)
 LoadMembersButton.grid(row=8,column=1,columnspan=1)
-PreviousMemberButton = tk.Button(mywindow,text='Previous Member', command=previousMember)
+PreviousMemberButton = Button(mywindow,text='Previous Member', command=previousMember)
 PreviousMemberButton.grid(row=8,column=0,columnspan=1)
-NextMemberButton = tk.Button(mywindow,text='Next Member', bg='red',command=nextMember)
+NextMemberButton = Button(mywindow,text='Next Member',command=nextMember)
 NextMemberButton.grid(row=8,column=2,columnspan=1)
 
 
