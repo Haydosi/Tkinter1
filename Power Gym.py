@@ -96,6 +96,7 @@ def saveMember():
     elif (Notes == ""):
         messagebox.showerror("Error Message", "Notes is blank")
     elif (friends == "Choose an Option"):
+        messagebox.showerror("Error Message", "Select friend amount")
     else:
         MemberRecords = (Firstname + "," + Surname +"," + DateofBirth + "," + Notes + "," + friends + "\n")
         Members = open("Members1.txt","a")
