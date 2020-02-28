@@ -1,5 +1,5 @@
 from tkinter import *
-from tkinter.ttk import *
+#from tkinter.ttk import *
 from tkinter import messagebox
 
 Position = 0
@@ -15,6 +15,9 @@ def cleartextboxes():
     NotesTextBox.configure(state='normal')
     NotesTextBox.delete('1.0','end')
     default1.set('Choose an Option')
+    DiscountTextBox.configure(state='normal')
+    DiscountTextBox.delete('1.0','end')
+    DiscountTextBox.configure(state='disabled')
 
 def loadMembers():
     global Position
@@ -106,8 +109,8 @@ def saveMember():
         cleartextboxes()
 
 def calculateDiscount(*args):
-    if default1 == 'Choose an Option':
-        return args
+    if 'Choose an Option' == default1.get():
+        return default1
     else:
         N2 = default1.get()
         # print(N2)
@@ -117,6 +120,9 @@ def calculateDiscount(*args):
         DiscountTextBox.delete('1.0','end')
         DiscountTextBox.insert('1.0', f'-{Discount}%')
         DiscountTextBox.configure(state='disabled')
+
+def hi():
+    print('hi')
 
 # def calculateCost(*args):
     
