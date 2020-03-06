@@ -12,8 +12,8 @@ def cleartextboxes():
     SurnameTextBox.delete('1.0','end')
     DateOfBirthTextBox.configure(state='normal')
     DateOfBirthTextBox.delete('1.0','end')
-    NotesTextBox.configure(state='normal')
-    NotesTextBox.delete('1.0','end')
+    AgeTextBox.configure(state='normal')
+    AgeTextBox.delete('1.0','end')
     default1.set('Choose an Option')
     DiscountTextBox.configure(state='normal')
     DiscountTextBox.delete('1.0','end')
@@ -35,7 +35,7 @@ def loadMembers():
     Firstname = FirstnameTextBox.insert('1.0',MemberRecords[0])
     Surname = SurnameTextBox.insert('1.0',MemberRecords[1])
     DateofBirth = DateOfBirthTextBox.insert('1.0',MemberRecords[2])
-    Notes = NotesTextBox.insert('1.0',MemberRecords[3])
+    Age = AgeTextBox.insert('1.0',MemberRecords[3])
     default1.set(MemberRecords[4])
 
     members.close()
@@ -46,7 +46,7 @@ def nextMember():
     global NumberOfMembers
 
     if NumberOfMembers == Position + 1:
-        messagebox.showerror("error Message","End of Database")
+        messagebox.showerror("Error Message","End of Database")
     else:
         Position = Position + 1
 
@@ -57,7 +57,7 @@ def nextMember():
         Firstname = FirstnameTextBox.insert('1.0',MemberRecords[0])
         Surname = SurnameTextBox.insert('1.0',MemberRecords[1])
         DateofBirth = DateOfBirthTextBox.insert('1.0',MemberRecords[2])
-        Notes = NotesTextBox.insert('1.0',MemberRecords[3])
+        Age = AgeTextBox.insert('1.0',MemberRecords[3])
         default1.set(MemberRecords[4])
 
 def previousMember():
@@ -77,31 +77,33 @@ def previousMember():
         Firstname = FirstnameTextBox.insert('1.0',MemberRecords[0])
         Surname = SurnameTextBox.insert('1.0',MemberRecords[1])
         DateofBirth = DateOfBirthTextBox.insert('1.0',MemberRecords[2])
-        Notes = NotesTextBox.insert('1.0',MemberRecords[3])
+        Age = AgeTextBox.insert('1.0',MemberRecords[3])
         default1.set(MemberRecords[4])
 
 
 
 def saveMember():
+    global NumberOfMembers
     Firstname = FirstnameTextBox.get('1.0','end-1c')
     Surname = SurnameTextBox.get('1.0','end-1c')
     DateofBirth = DateOfBirthTextBox.get('1.0','end-1c')
-    Notes = NotesTextBox.get('1.0','end-1c')
+    Age = AgeTextBox.get('1.0','end-1c')
     friends = default1.get()
     
-
-    if (Firstname == ""):
+    if NumberOfMembers >= 20:
+        messagebox.showerror("Error Message","Max Amount of Members Reached")
+    elif (Firstname == ""):
         messagebox.showerror("Error Message", "Firstname is blank")
     elif (Surname == ""):
         messagebox.showerror("Error Message", "Surname is blank")
     elif (DateofBirth == ""):
         messagebox.showerror("Error Message", "DateofBirth is blank")
-    elif (Notes == ""):
-        messagebox.showerror("Error Message", "Notes is blank")
+    elif (Age == ""):
+        messagebox.showerror("Error Message", "Age is blank")
     elif (friends == "Choose an Option"):
         messagebox.showerror("Error Message", "Select friend amount")
     else:
-        MemberRecords = (Firstname + "," + Surname +"," + DateofBirth + "," + Notes + "," + friends + "\n")
+        MemberRecords = (Firstname + "," + Surname +"," + DateofBirth + "," + Age + "," + friends + "\n")
         Members = open("Members1.txt","a")
         Members.write(MemberRecords)
         Members.close()
@@ -150,10 +152,10 @@ DateOfBirthLabel.grid(row=3,column=0,columnspan=1)
 DateOfBirthTextBox = Text(mywindow,width=20,height=2)
 DateOfBirthTextBox.grid(row=3,column=1,sticky='E')
 
-NotesLabel = Label(mywindow,text='Notes')
-NotesLabel.grid(row=4,column=0,columnspan=1)
-NotesTextBox = Text(mywindow,width=20,height=2)
-NotesTextBox.grid(row=4,column=1,sticky='E')
+AgeLabel = Label(mywindow,text='Age')
+AgeLabel.grid(row=4,column=0,columnspan=1)
+AgeTextBox = Text(mywindow,width=20,height=2)
+AgeTextBox.grid(row=4,column=1,sticky='E')
 
 default1 = StringVar(mywindow)
 choices = [ '0', '1','2','3','4']
